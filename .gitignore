@@ -1,0 +1,16 @@
+# Dependencias locales
+node_modules/
+
+# Variables de entorno y secretos locales
+.env
+.env.*
+!.env.example
+
+# Archivos temporales y registros
+*.log
+*.tmp
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+Desktop.ini

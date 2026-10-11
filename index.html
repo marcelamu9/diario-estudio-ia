@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Diario de Estudio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="heat-map.js" defer></script>
+    <script src="weekly-goals.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="contenedor">
+      <header class="cabecera">
+        <h1>Diario de Estudio</h1>
+      </header>
+
+      <section class="panel registro" aria-labelledby="titulo-registro">
+        <h2 id="titulo-registro">Registrar sesión</h2>
+        <form id="formulario-sesion">
+          <div class="campos">
+            <label>
+              Fecha
+              <input id="fecha" name="fecha" type="date" required />
+            </label>
+            <label>
+              Tema
+              <input id="tema" name="tema" type="text" required />
+            </label>
+            <label>
+              Minutos
+              <input id="minutos" name="minutos" type="number" min="0" step="any" required />
+            </label>
+          </div>
+          <button type="submit">Guardar sesión</button>
+        </form>
+      </section>
+
+      <div class="progress">
+        <section class="racha" aria-labelledby="titulo-racha">
+          <h2 id="titulo-racha">Racha actual</h2>
+          <p class="racha-valor"><span id="dias-racha">0</span> <span class="racha-icono" aria-hidden="true">🔥</span></p>
+          <p id="racha-unidad" class="racha-unidad">días seguidos</p>
+        </section>
+
+        <div class="resumenes">
+          <section class="resumen racha-mejor" aria-labelledby="titulo-mejor-racha">
+            <h2 id="titulo-mejor-racha"><span class="resumen-icono" aria-hidden="true">🏆</span>Mejor racha</h2>
+            <p class="resumen-valor"><span id="dias-mejor-racha">0</span></p>
+            <p id="mejor-racha-unidad" class="racha-unidad">días seguidos</p>
+          </section>
+          <section class="resumen" aria-labelledby="titulo-semana">
+            <h2 id="titulo-semana"><span class="resumen-icono" aria-hidden="true">⏱</span>Tiempo estudiado esta semana</h2>
+            <p class="resumen-valor"><span id="minutos-semana">0</span></p>
+            <p class="resumen-unidad">min</p>
+          </section>
+          <section class="resumen" aria-labelledby="titulo-mes">
+            <h2 id="titulo-mes"><span class="resumen-icono" aria-hidden="true">📅</span>Días estudiados este mes</h2>
+            <p class="resumen-valor"><span id="dias-mes">0</span></p>
+            <p id="unidad-dias-mes" class="resumen-unidad">días</p>
+          </section>
+        </div>
+      </div>
+
+      <section class="objetivos" aria-labelledby="titulo-objetivos">
+        <h2 id="titulo-objetivos">Objetivos semanales</h2>
+        <p>Esta semana y las 11 anteriores, de lunes a domingo.</p>
+        <p id="objetivos-error-metas" class="objetivos-advertencia" hidden>No se pueden leer las metas guardadas. Los objetivos no están disponibles.</p>
+        <p id="objetivos-error-sesiones" class="objetivos-advertencia" hidden>No se pueden leer las sesiones guardadas. El progreso no está disponible.</p>
+        <ol id="lista-objetivos" class="lista-objetivos"></ol>
+        <form id="formulario-objetivo" aria-label="Editar meta semanal">
+          <label for="objetivo-semana">Semana que quieres editar</label>
+          <select id="objetivo-semana" name="semana"></select>
+          <label for="objetivo-minutos">Meta en minutos (admite coma o punto)</label>
+          <input id="objetivo-minutos" name="minutos" type="text" inputmode="decimal" aria-describedby="objetivo-ayuda objetivo-aviso" />
+          <p id="objetivo-ayuda">Escribe una meta nueva para la semana elegida. Debe ser mayor que cero.</p>
+          <button type="submit">Guardar meta</button>
+          <p id="objetivo-aviso" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="mapa-estudio" aria-labelledby="titulo-mapa">
+        <h2 id="titulo-mapa">Días de estudio</h2>
+        <p class="mapa-descripcion">Tus últimas 12 semanas de estudio</p>
+        <p id="mapa-error" hidden>No se puede mostrar el mapa porque no se pueden leer las sesiones guardadas.</p>
+        <div id="mapa-contenido">
+          <div class="mapa-desplazamiento">
+            <div class="mapa-rejilla">
+              <div class="mapa-dias-semana" aria-hidden="true">
+                <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              </div>
+              <div id="mapa-semanas" class="mapa-semanas" aria-label="Mapa de días estudiados"></div>
+            </div>
+          </div>
+          <p id="mapa-detalle" class="mapa-detalle" aria-live="polite" hidden></p>
+          <div class="mapa-leyenda" aria-label="Intensidad de estudio">
+            <span><i class="mapa-muestra none" aria-hidden="true"></i>Sin estudio</span>
+            <span><i class="mapa-muestra level-1" aria-hidden="true"></i>Menos de 30 min</span>
+            <span><i class="mapa-muestra level-2" aria-hidden="true"></i>30 a menos de 60 min</span>
+            <span><i class="mapa-muestra level-3" aria-hidden="true"></i>60 a menos de 120 min</span>
+            <span><i class="mapa-muestra level-4" aria-hidden="true"></i>120 min o más</span>
+            <span><i class="mapa-muestra future" aria-hidden="true"></i>Día futuro</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel sesiones" aria-labelledby="titulo-sesiones">
+        <h2 id="titulo-sesiones">Sesiones</h2>
+        <ul id="lista-sesiones" class="lista-sesiones"></ul>
+      </section>
+    </main>
+  </body>
+</html>

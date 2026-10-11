@@ -82,7 +82,7 @@ Las pruebas cubren lógica de fechas locales, períodos, sumas, metas, redondeos
 ## Estado y limitaciones conocidas
 
 El registro de sesiones, los objetivos y los indicadores están implementados. La interfaz tiene una dirección oscura y un panel unificado de progreso; **el rediseño visual global todavía tiene tareas pendientes** en [la spec 003](specs/003-rediseno-visual/tasks.md).
-
+si
 Existe un defecto conocido de precisión en el mapa de calor: un valor de `29,99999999999999` minutos puede mostrarse como 30 y asignarse al nivel siguiente. La revisión lo detectó aunque las pruebas existentes pasaban. Su corrección sigue pendiente y es independiente del redondeo intencional de los objetivos semanales.
 
 ## Créditos
